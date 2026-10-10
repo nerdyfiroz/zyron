@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Department of Zyron — Office of Intake & Whitelist</title>
+  
+  <meta name="description" content="Zyron Whitelist & Intake Department. Ring the bell, complete your tasks, secure your spot. The clerk is watching.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Zyron">
+  <meta property="og:title" content="The Department of Zyron — Office of Intake & Whitelist">
+  <meta property="og:description" content="Zyron Whitelist & Intake Department. Ring the bell, complete your tasks, secure your spot. The clerk is watching.">
+  <meta property="og:image" content="assets/homie-5.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@platform_360">
+  <meta name="twitter:title" content="The Department of Zyron — Office of Intake & Whitelist">
+  <meta name="twitter:description" content="Zyron Whitelist & Intake Department. Ring the bell, complete your tasks, secure your spot. The clerk is watching.">
+  <meta name="twitter:image" content="assets/homie-5.png">
+
+  <link rel="icon" type="image/png" href="assets/homie-5.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Courier+Prime:wght@400;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- INTRO SCENE -->
+  <div id="intro">
+    <div class="intro-stack">
+      <video id="intro-clip" src="assets/gate/logo-alpha.webm" autoplay muted loop playsinline preload="auto" tabindex="-1" aria-label="Zyron"></video>
+      <button type="button" class="btn" id="intro-enter">Enter the department</button>
+    </div>
+  </div>
+
+  <!-- SCENE: HALLWAY (#s-gate) -->
+  <section class="scene" id="s-gate">
+    <div id="gate-stage">
+      <img class="layer full" src="assets/gate/bg.webp" alt="">
+      <img class="layer crop art" data-box="bathroom" src="assets/gate/hit-bathroom.webp" alt="">
+      <img class="layer crop art" data-box="door" id="door-art" src="assets/gate/hit-room.webp" alt="">
+      <img class="layer crop art" data-box="elevator" src="assets/gate/elevator-disabled.png" alt="">
+      <img class="layer hi crop art" data-box="bathroom" id="hi-bathroom" src="assets/gate/hover-bathroom.webp" alt="">
+      <img class="layer hi crop art" data-box="door" id="hi-door" src="assets/gate/hover-room.webp" alt="">
+      <img class="layer hi crop art" data-box="vent" id="hi-vent" src="assets/gate/hit-vent.webp" alt="">
+      <img class="layer crop art" data-box="frame" id="hi-frame" src="assets/gate/hit-disclaimer.png" alt="">
+      <img class="layer full" src="assets/gate/boxes.png" alt="">
+      
+      <img class="layer crop art hall-tasks" data-box="hallTasks" src="assets/room/task-tray-bottom.webp" alt="">
+      <img class="layer crop art hall-tasks" data-box="hallTasks" id="hi-hall-tasks" src="assets/room/hit-tasks.webp" alt="">
+      <img class="layer crop art hall-tasks" data-box="hallTasks" src="assets/room/task-tray-top.webp" alt="">
+      
+      <img class="layer full" src="assets/gate/overlay-top.png" alt="">
+
+      <!-- Hit buttons for hallway -->
+      <button class="hit" data-hit="bathroom" data-hi="hi-bathroom" aria-label="the bathroom" data-tip="the bathroom"></button>
+      <button class="hit" id="hit-door" data-hit="door" data-hi="hi-door" aria-label="enter the department" data-tip="enter the department"></button>
+      <button class="hit hall-tasks" data-hit="hallTasks" data-hi="hi-hall-tasks" aria-label="the task sheet" data-tip="your tasks"></button>
+      <button class="hit" data-hit="vent" aria-label="the vent" data-tip="the vent"></button>
+      <button class="hit" data-hit="elevator" aria-label="out of order elevator" data-tip="out of order"></button>
+      <button class="hit frame" data-hit="frame" data-hi="hi-frame" aria-label="disclaimer" data-tip="department notice"></button>
+
+      <div class="layer crop art" data-box="vbub" id="vbub"><div class="bub"><p class="said" id="vsaid"></p></div></div>
+      <div id="vopts"></div>
+    </div>
+  </section>
+
+  <!-- SCENE: INTAKE ROOM (#s-room) -->
+  <section class="scene" id="s-room">
+    <div id="room-stage">
+      <img class="layer full" id="room-bg" src="assets/room/01-room-open.webp" alt="The Clerk Office">
+      
+      <!-- Clerk Iris (Eyes tracking mouse) -->
+      <img class="layer full" id="room-iris" src="assets/room/06-clerk-iris.webp" alt="Clerk Eyes">
+      
+      <!-- Task tray on desk -->
+      <img class="layer crop art" id="tray-bottom" data-box="tasks" src="assets/room/task-tray-bottom.webp" alt="">
+      <img class="layer hi crop art" id="hi-tasks" data-box="tasks" src="assets/room/hit-tasks.webp" alt="">
+      <img class="layer crop art" id="tray-top" data-box="tasks" src="assets/room/task-tray-top.webp" alt="">
+      
+      <!-- Desk pickle -->
+      <img class="layer crop art" id="desk-pickle" data-box="pickle" src="assets/room/pickle.png" alt="Pickle">
+      
+      <!-- Desk Bell -->
+      <img class="layer hi crop art" id="hi-bell" data-box="bell" src="assets/room/05-hit-bell.webp" alt="Bell">
+      <img class="layer crop art" id="hi-bell-pressed" data-box="bell" src="assets/room/05-hit-bell-pressed.webp" alt="Bell Pressed">
+      
+      <!-- Socials / Business Cards -->
+      <img class="layer hi crop art" id="hi-socials" data-box="socials" src="assets/room/hit-socials.webp" alt="Business Cards">
+      
+      <!-- Exit Arrow -->
+      <img class="layer hi crop art" id="hi-exit" data-box="exit" src="assets/room/back-button-mob.png" alt="Exit">
+      
+      <!-- Noticeboard on wall -->
+      <img class="layer hi crop art" id="hi-board" data-box="board" src="assets/room/hit-noticeboard.webp" alt="Noticeboard">
+      <img class="layer crop art paper" id="paper-1" data-box="board" src="assets/room/noticeboard-paper-1.webp" alt="">
+      <img class="layer crop art paper" id="paper-2" data-box="board" src="assets/room/noticeboard-paper-2.webp" alt="">
+      <img class="layer crop art paper" id="paper-3" data-box="board" src="assets/room/noticeboard-paper-3.webp" alt="">
+      <img class="layer crop art paper" id="paper-4" data-box="board" src="assets/room/noticeboard-paper-4.webp" alt="">
+      <img class="layer crop art paper" id="paper-5" data-box="board" src="assets/room/noticeboard-paper-5.webp" alt="">
+      <img class="layer crop art paper" id="paper-6" data-box="board" src="assets/room/noticeboard-paper-6.webp" alt="">
+      
+      <!-- Gallery frame on wall -->
+      <img class="layer hi crop art" id="hi-gallery" data-box="gallery" src="assets/room/hit-gallery.webp" alt="Gallery">
+
+      <!-- Interactive Hit Targets -->
+      <button class="hit" data-hit="tasks" data-hi="hi-tasks" aria-label="the task sheet" data-tip="your tasks"></button>
+      <button class="hit" data-hit="bell" data-hi="hi-bell" id="bell-hit" aria-label="ring the bell" data-tip="ring for the clerk"></button>
+      <button class="hit" data-hit="socials" data-hi="hi-socials" aria-label="the department's socials" data-tip="the department's socials"></button>
+      <button class="hit" data-hit="board" data-hi="hi-board" id="board-hit" aria-label="the noticeboard" data-tip="the noticeboard"></button>
+      <button class="hit" data-hit="gallery" data-hi="hi-gallery" aria-label="the collection" data-tip="the collection"></button>
+      <button class="hit" data-hit="exit" data-hi="hi-exit" aria-label="back to the hallway" data-tip="back to hallway"></button>
+      
+      <!-- Mobile back button -->
+      <button class="room-back" id="room-back" type="button" aria-label="back to the hallway" data-tip="back to hallway">
+        <img src="assets/room/back-button-mob.png" alt="Back" draggable="false">
+      </button>
+
+      <!-- Admin Desk Shortcut (Intake Officer nameplate) -->
+      <a href="admin.html" class="admin-desk-link" id="admin-desk-plate" title="Mission Control (Admin Panel)" aria-label="Admin Panel"></a>
+    </div>
+
+    <!-- Speech bubble above the Clerk's head -->
+    <div id="bubble" aria-live="polite">
+      <div class="bub">
+        <span class="who">THE CLERK</span>
+        <p class="said" id="clerk-said">Window three is open. Whitelist applications in the tray.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL: WHITELIST TASKS CLIPBOARD (#tasks) -->
+  <div id="tasks" aria-label="the task sheet" role="dialog">
+    <button class="ov-close" data-ovclose="tasks" aria-label="close">×</button>
+    <div class="tasks-wrap" id="tw">
+      <img class="board" src="assets/room/tasks-clipboard.webp" alt="Clipboard">
+      <div id="tasks-page">
+        <div class="tasks-form-inner" id="tasks-form-container">
+          <div class="gh">
+            <div class="dept">DEPARTMENT OF ZYRON<small>OFFICE OF INTAKE &amp; WHITELIST</small></div>
+            <div class="casebox" id="casebox-id">FORM DOF-ZYRON-1</div>
+          </div>
+          <div class="gtitle" id="tasks-header-subtitle">APPLICATION FOR ZYRON CREW ADMISSION</div>
+          
+          <div id="tasks-list-wrap">
+            <!-- Dynamically populated from ZyronDB -->
+          </div>
+
+          <div id="tasks-submission-area">
+            <button type="button" class="tasks-submit-btn" id="tasks-submit-btn">SUBMIT TO THE CLERK</button>
+            <div id="tasks-status-msg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: SOCIALS 3D CARD (#socials) -->
+  <div id="socials" aria-label="the department's socials" role="dialog">
+    <button class="ov-close" data-ovclose="socials" aria-label="close">×</button>
+    <div class="soc-wrap" id="sw">
+      <div class="soc-card" id="soc-card" tabindex="0" role="button" aria-pressed="false" aria-label="flip the card">
+        
+        <!-- CARD FRONT -->
+        <div class="soc-face front bc">
+          <span class="bc-corner tl">dept. of zyron</span>
+          <span class="bc-corner tr">est. 2026</span>
+          <img class="bc-logo both-rooms" src="assets/room/logo.png" alt="Zyron">
+          <span class="bc-sub">office of intake and classification</span>
+          <div class="bc-discs">
+            <!-- Official X Link -->
+            <a class="soc disc" id="soc-x" href="https://x.com/platform_360" target="_blank" rel="noopener" aria-label="Zyron on X" title="Follow @platform_360">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <!-- Official OpenSea Link -->
+            <a class="soc disc" id="soc-opensea" href="https://opensea.io" target="_blank" rel="noopener" aria-label="Zyron on OpenSea" title="OpenSea Collection">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="12" fill="#2081E2"/>
+                <path fill="#ffffff" d="M5.92 12.403l.051-.081 3.123-4.884a.107.107 0 0 1 .187.014c.52 1.169.972 2.623.76 3.528-.088.372-.335.876-.614 1.342a2.405 2.405 0 0 1-.117.199.106.106 0 0 1-.09.045H6.013a.106.106 0 0 1-.091-.163zm13.914 1.68a.109.109 0 0 1-.065.101c-.243.103-1.07.485-1.414.962-.878 1.222-1.548 2.97-3.048 2.97H9.053a4.019 4.019 0 0 1-4.013-4.028v-.072c0-.058.048-.106.108-.106h3.485c.07 0 .12.063.115.132-.026.226.017.459.125.67.206.42.636.682 1.099.682h1.726v-1.347H9.99a.11.11 0 0 1-.089-.173l.063-.09c.16-.231.391-.586.621-.992.156-.274.308-.566.43-.86.024-.052.043-.107.065-.16.033-.094.067-.182.091-.269a4.57 4.57 0 0 0 .065-.223c.057-.25.081-.514.081-.787 0-.108-.004-.221-.014-.327-.005-.117-.02-.235-.034-.352a3.415 3.415 0 0 0-.048-.312 6.494 6.494 0 0 0-.098-.468l-.014-.06c-.03-.108-.056-.21-.09-.317a11.824 11.824 0 0 0-.328-.972 5.212 5.212 0 0 0-.142-.355c-.072-.178-.146-.339-.213-.49a3.564 3.564 0 0 1-.094-.197 4.658 4.658 0 0 0-.103-.213c-.024-.053-.053-.104-.072-.152l-.211-.388c-.029-.053.019-.118.077-.101l1.32.357h.01l.173.05.192.054.07.019v-.783c0-.379.302-.686.679-.686a.66.66 0 0 1 .477.202.69.69 0 0 1 .2.484V6.65l.141.039c.01.005.022.01.031.017.034.024.084.062.147.11.05.038.103.086.165.137a10.351 10.351 0 0 1 .574.504c.214.199.454.432.684.691.065.074.127.146.192.226.062.079.132.156.19.232.079.104.16.212.235.324.033.053.074.108.105.161.096.142.178.288.257.435.034.067.067.141.096.213.089.197.159.396.202.598a.65.65 0 0 1 .029.132v.01c.014.057.019.12.024.184a2.057 2.057 0 0 1-.106.874c-.031.084-.06.17-.098.254-.075.17-.161.343-.264.502-.034.06-.075.122-.113.182-.043.063-.089.123-.127.18a3.89 3.89 0 0 1-.173.221c-.053.072-.106.144-.166.209-.081.098-.16.19-.245.278-.048.058-.1.118-.156.17-.052.06-.108.113-.156.161-.084.084-.15.147-.208.202l-.137.122a.102.102 0 0 1-.072.03h-1.051v1.346h1.322c.295 0 .576-.104.804-.298.077-.067.415-.36.816-.802a.094.094 0 0 1 .05-.03l3.65-1.057a.108.108 0 0 1 .138.103z"/>
+              </svg>
+            </a>
+          </div>
+          <span class="bc-corner bl">always early</span>
+          <span class="bc-corner br">always watching</span>
+        </div>
+
+        <!-- CARD BACK -->
+        <div class="soc-face back bc rev">
+          <header class="bc-head">
+            <img class="bc-seal" src="assets/folder/card-icon.webp" alt="Seal">
+            <div class="bc-name"><b>department of zyron</b><small>office of intake and classification</small></div>
+          </header>
+          <div class="bc-body">
+            <div class="bc-who">
+              <b>the clerk</b>
+              <span>intake officer</span>
+              <span>window three</span>
+              <em>always early, always watching</em>
+            </div>
+            <ul class="bc-lines">
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
+                <span>555-ZYRON <small>ext. 3</small></span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <span>intake@zy-ron.tech</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                <span>basement level, corridor b<br>the building, no fixed address</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+                <span>mon–fri, when open<br>sat–sun, allegedly</span>
+              </li>
+              <li>
+                <a class="soc bcl" id="soc-x2" href="https://x.com/platform_360" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  <span>@platform_360</span>
+                </a>
+              </li>
+              <li>
+                <a class="soc bcl" id="soc-opensea2" href="https://opensea.io" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#2081E2"/><path fill="#ffffff" d="M5.92 12.403l.051-.081 3.123-4.884a.107.107 0 0 1 .187.014c.52 1.169.972 2.623.76 3.528-.088.372-.335.876-.614 1.342a2.405 2.405 0 0 1-.117.199.106.106 0 0 1-.09.045H6.013a.106.106 0 0 1-.091-.163zm13.914 1.68a.109.109 0 0 1-.065.101c-.243.103-1.07.485-1.414.962-.878 1.222-1.548 2.97-3.048 2.97H9.053a4.019 4.019 0 0 1-4.013-4.028v-.072c0-.058.048-.106.108-.106h3.485c.07 0 .12.063.115.132-.026.226.017.459.125.67.206.42.636.682 1.099.682h1.726v-1.347H9.99a.11.11 0 0 1-.089-.173l.063-.09c.16-.231.391-.586.621-.992.156-.274.308-.566.43-.86.024-.052.043-.107.065-.16.033-.094.067-.182.091-.269a4.57 4.57 0 0 0 .065-.223c.057-.25.081-.514.081-.787 0-.108-.004-.221-.014-.327-.005-.117-.02-.235-.034-.352a3.415 3.415 0 0 0-.048-.312 6.494 6.494 0 0 0-.098-.468l-.014-.06c-.03-.108-.056-.21-.09-.317a11.824 11.824 0 0 0-.328-.972 5.212 5.212 0 0 0-.142-.355c-.072-.178-.146-.339-.213-.49a3.564 3.564 0 0 1-.094-.197 4.658 4.658 0 0 0-.103-.213c-.024-.053-.053-.104-.072-.152l-.211-.388c-.029-.053.019-.118.077-.101l1.32.357h.01l.173.05.192.054.07.019v-.783c0-.379.302-.686.679-.686a.66.66 0 0 1 .477.202.69.69 0 0 1 .2.484V6.65l.141.039c.01.005.022.01.031.017.034.024.084.062.147.11.05.038.103.086.165.137a10.351 10.351 0 0 1 .574.504c.214.199.454.432.684.691.065.074.127.146.192.226.062.079.132.156.19.232.079.104.16.212.235.324.033.053.074.108.105.161.096.142.178.288.257.435.034.067.067.141.096.213.089.197.159.396.202.598a.65.65 0 0 1 .029.132v.01c.014.057.019.12.024.184a2.057 2.057 0 0 1-.106.874c-.031.084-.06.17-.098.254-.075.17-.161.343-.264.502-.034.06-.075.122-.113.182-.043.063-.089.123-.127.18a3.89 3.89 0 0 1-.173.221c-.053.072-.106.144-.166.209-.081.098-.16.19-.245.278-.048.058-.1.118-.156.17-.052.06-.108.113-.156.161-.084.084-.15.147-.208.202l-.137.122a.102.102 0 0 1-.072.03h-1.051v1.346h1.322c.295 0 .576-.104.804-.298.077-.067.415-.36.816-.802a.094.094 0 0 1 .05-.03l3.65-1.057a.108.108 0 0 1 .138.103z"/>
+                  <span>OpenSea</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <p class="soc-hint">click the card to flip it</p>
+  </div>
+
+  <!-- MODAL: NOTICEBOARD (#notices) -->
+  <div id="notices" aria-label="the noticeboard" role="dialog">
+    <button class="ov-close" data-ovclose="notices" aria-label="close">×</button>
+    <div class="notes-col" id="notes-col">
+      <div class="notes-head">OFFICIAL DEPARTMENT DISPATCHES</div>
+      
+      <article class="note" style="--rot:-1.2deg;--off:-3px;">
+        <div class="n-art"></div>
+        <div class="n-date"><span>OCTOBER 2026</span><span class="tag new">DISPATCH #01</span></div>
+        <h3 class="n-title">PUBLIC RECORDS &amp; INTAKE DIRECTIVE</h3>
+        <p class="n-body">The Clerk has officially begun reviewing whitelist filings for the Zyron collection.</p>
+        <p class="n-body">Ensure your proof submission contains verified engagement under official @platform_360 posts and an authentic EVM address.</p>
+        <p class="n-body">Alts, bots, and sybil accounts will be struck from the permanent register immediately.</p>
+      </article>
+
+      <article class="note" style="--rot:1.5deg;--off:4px;">
+        <div class="n-art"></div>
+        <div class="n-date"><span>SEPTEMBER 2026</span><span class="tag">DISPATCH #02</span></div>
+        <h3 class="n-title">CREW ALLOCATION PROTOCOL</h3>
+        <p class="n-body">The Committee is allocating priority mint spots through this office.</p>
+        <p class="n-body">No seed phrases are ever requested by Department personnel. Protect your keys, verify contracts, and remain alert.</p>
+        <p class="n-body">Window Three remains operational. Ring for assistance.</p>
+      </article>
+
+      <article class="note" style="--rot:-0.8deg;--off:2px;">
+        <div class="n-art"></div>
+        <div class="n-date"><span>ARCHIVE 2026</span><span class="tag">DISPATCH #03</span></div>
+        <h3 class="n-title">STAFF APPRECIATION ARCHIVE</h3>
+        <p class="n-body">Portraits of verified Zyron crew members are on display in the framed office gallery.</p>
+        <p class="n-body">Inspect the portraits on the wall to preview designated crew variants.</p>
+      </article>
+
+      <div class="notes-end">End of bulletin &middot; All records filed</div>
+    </div>
+  </div>
+
+  <!-- MODAL: COLLECTION GALLERY (#gallery) -->
+  <div id="gallery" aria-label="the collection" role="dialog">
+    <button class="gal-close" id="gal-close" aria-label="close">×</button>
+    <div class="tilt">
+      <div class="plate" id="plate">
+        <img src="assets/homie-1.png" id="gal-img" alt="Zyron Collection">
+        <div class="glare"><i></i></div>
+        <div class="gallery-card-badge" id="gal-badge">ZYRON #01 &middot; THE CAPTAIN</div>
+      </div>
+    </div>
+    <div class="gal-nav">
+      <button class="gal-arrow" id="galPrev" aria-label="previous">
+        <img src="assets/room/gallery-arrow.png" alt="Prev" draggable="false">
+      </button>
+      <button class="gal-arrow" id="galNext" aria-label="next">
+        <img src="assets/room/gallery-arrow.png" alt="Next" draggable="false">
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL: DISCLAIMER NOTICE (#disclaimer) -->
+  <div id="disclaimer" role="dialog" aria-modal="true" aria-labelledby="disclaimer-title">
+    <button class="ov-close" data-ovclose="disclaimer" aria-label="close">&times;</button>
+    <article class="disc">
+      <h2 id="disclaimer-title">Department Notice &middot;<br>Read Before Proceeding</h2>
+      <p class="disc-lead">The Department of Zyron reminds all applicants that this is web3.</p>
+      <p>Zyron NFTs are digital collectibles created for art, entertainment, and crew participation.</p>
+      <p>Nothing on this website constitutes financial, legal, investment, or tax advice. The Department promises no guaranteed profits, liquidity, or financial returns.</p>
+      <p>You are solely responsible for your wallet security, transaction fees, and verification of all contract interactions.</p>
+      <p class="disc-foot">In short: collect responsibly, protect your wallet, and welcome to the crew.</p>
+    </article>
+  </div>
+
+  <!-- SOUND CONTROLS & MASTER VOLUME -->
+  <div id="sound-controls" role="group" aria-label="sound controls">
+    <input id="vol" type="range" min="0" max="100" step="1" value="50" aria-label="volume" title="Volume slider">
+  </div>
+
+  <!-- TOOLTIP CONTAINER -->
+  <div id="tip" role="tooltip" aria-hidden="true"></div>
+
+  <!-- BLACKOUT TRANSITION LAYER -->
+  <div id="blackout" aria-hidden="true"></div>
+
+  <!-- AUDIO SOURCES (Preloaded) -->
+  <audio id="snd-ambient-room" src="assets/sound/room-ambient.mp3" loop preload="auto"></audio>
+  <audio id="snd-ambient-gate" src="assets/sound/ambient-1.mp3" loop preload="auto"></audio>
+  <audio id="snd-bell" src="assets/sound/bell.mp3" preload="auto"></audio>
+  <audio id="snd-door" src="assets/sound/door-1.mp3" preload="auto"></audio>
+  <audio id="snd-button" src="assets/sound/button.mp3" preload="auto"></audio>
+  <audio id="snd-tasks" src="assets/sound/tasks.mp3" preload="auto"></audio>
+  <audio id="snd-noticeboard" src="assets/sound/noticeboard.mp3" preload="auto"></audio>
+  <audio id="snd-gallery" src="assets/sound/gallery.mp3" preload="auto"></audio>
+  <audio id="snd-gallery-flip" src="assets/sound/gallery-flip.mp3" preload="auto"></audio>
+  <audio id="snd-cards" src="assets/sound/business-cards.mp3" preload="auto"></audio>
+  <audio id="snd-knock" src="assets/sound/knock-1.mp3" preload="auto"></audio>
+  <audio id="snd-locked" src="assets/sound/locked-door.mp3" preload="auto"></audio>
+  <audio id="snd-swoosh" src="assets/sound/swoosh.mp3" preload="auto"></audio>
+
+  <!-- SCRIPTS -->
+  <script src="app.js"></script>
+</body>
+</html>

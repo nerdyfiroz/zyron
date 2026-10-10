@@ -15,6 +15,7 @@ if (!fs.existsSync(publicDir)) {
 const filesToCopy = [
   'index.html',
   'portfolio.html',
+  'site.css',
   'profile.jpg',
   'logo.png',
   'metadata.json'
